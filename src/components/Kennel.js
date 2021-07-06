@@ -3,6 +3,7 @@ import { AnimalCard } from "./animal/AnimalCard"
 import { EmployeeCard } from "./employee/EmployeeCard"
 import { LocationCard } from "./location/LocationCard"
 import { CustomerCard } from "./customer/CustomerCard"
+import { PropsAndState } from "./PropsAndState"
 import "./animal/Animal.css"
 
 //Look carefully at the <article> tag. In React, we add classes to a component with `className` instead of `class`.
@@ -15,7 +16,7 @@ export const Kennel = () => (
             <div>Visit Us at the Nashville North Location</div>
             <div>500 Puppy Way</div>
         </address>
-
+        <PropsAndState yourName={"Andy"} />
         <h2>Animals</h2>
         <article className="animals">
             <AnimalCard />
