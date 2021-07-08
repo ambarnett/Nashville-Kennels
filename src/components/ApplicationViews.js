@@ -17,20 +17,20 @@ export const ApplicationViews = () => {
             </Route>
             {/* Render the animal list when http://localhost:3000/animal */}
             <AnimalProvider>
-            <Route exact path="/animal">
+            <Route exact path="/animals">
                 <AnimalList />
             </Route>
             </AnimalProvider>
             {/* Render the animal list when http://localhost:3000/location */}
-            <Route path="/location">
+            <Route path="/locations">
                 <LocationCard />
             </Route>
             {/* Render the animal list when http://localhost:3000/employee */}
-            <Route path="/employee">
+            <Route path="/employees">
                 <EmployeeCard />
             </Route>
             {/* Render the animal list when http://localhost:3000/customer */}
-            <Route path="/customer">
+            <Route path="/customers">
                 <CustomerCard />
             </Route>
         </>
