@@ -9,16 +9,16 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/">NSS Kennels</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/location">Locations</Link>
+                <Link className="navbar__link" to="/locations">Locations</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/animal">Animals</Link>
+                <Link className="navbar__link" to="/animals">Animals</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/customer">Customers</Link>
+                <Link className="navbar__link" to="/customers">Customers</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/employee">Employees</Link>
+                <Link className="navbar__link" to="/employees">Employees</Link>
             </li>
         </ul>
     )
