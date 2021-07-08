@@ -17,30 +17,30 @@ export const ApplicationViews = () => {
             <Route exact path="/">
                 <Home />
             </Route>
-            {/* Render the animal list when http://localhost:3000/animal */}
-            <AnimalProvider>
-            <Route exact path="/animals">
-                <AnimalList />
-            </Route>
-            </AnimalProvider>
             {/* Render the animal list when http://localhost:3000/location */}
             <LocationProvider>
-            <Route exact path="/locations">
-                <LocationList />
-            </Route>
+                <Route exact path="/locations">
+                    <LocationList />
+                </Route>
             </LocationProvider>
-            {/* Render the animal list when http://localhost:3000/employee */}
-            <EmployeeProvider>
-            <Route exact path="/employees">
-                <EmployeeList />
-            </Route>
-            </EmployeeProvider>
+            {/* Render the animal list when http://localhost:3000/animal */}
+            <AnimalProvider>
+                <Route exact path="/animals">
+                    <AnimalList />
+                </Route>
+            </AnimalProvider>
             {/* Render the animal list when http://localhost:3000/customer */}
             <CustomerProvider>
-            <Route exact path="/customers">
-                <CustomerList />
-            </Route>
+                <Route exact path="/customers">
+                    <CustomerList />
+                </Route>
             </CustomerProvider>
+            {/* Render the animal list when http://localhost:3000/employee */}
+            <EmployeeProvider>
+                <Route exact path="/employees">
+                    <EmployeeList />
+                </Route>
+            </EmployeeProvider>
         </>
     )
 }
