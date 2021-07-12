@@ -19,7 +19,7 @@ export const EmployeeProvider = (props) => {
             },
             body: JSON.stringify(employeeObj)
         })
-        .then(getEmployees)
+        .then(res => res.json())
     }
     return (
         <EmployeeContext.Provider value={{
