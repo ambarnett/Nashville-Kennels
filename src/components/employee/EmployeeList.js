@@ -7,13 +7,14 @@ import "./Employee.css"
 
 export const EmployeeList = () => {
     const { employees, getEmployees } = useContext(EmployeeContext)
-    const { locations, getLocations } = useContext(LocationContext)
+    // const { locations, getLocations } = useContext(LocationContext)
     const history = useHistory()
 
     useEffect(() => {
         console.log("EmployeeList: useEffect - getEmployees")
-        getLocations()
-        .then(getEmployees)
+        getEmployees()
+        // getLocations()
+        // .then(getEmployees)
     }, [])
 
     return (
@@ -26,8 +27,9 @@ export const EmployeeList = () => {
                 {console.log("EmployeeList: Render", employees)}
                 {
                     employees.map(employee => {
-                        const clinic = locations.find(l => l.id === employee.locationId)
-                        return <EmployeeCard key={employee.id} location={clinic} employee={employee} />
+                        // const clinic = locations.find(l => l.id === employee.locationId)
+                        // return <EmployeeCard key={employee.id} location={clinic} employee={employee} />
+                        return <EmployeeCard key={employee.id} employee={employee} />
                     })
                 }
             </div>
