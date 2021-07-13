@@ -30,8 +30,8 @@ export const EmployeeForm = () => {
 
         const locationId = parseInt(employee.locationId)
 
-        if (locationId === 0) {
-            window.alert("Please select a location")
+        if (locationId === 0 || employee.name === "") {
+            window.alert("Please fill out form completely")
         } else {
             const newEmployee = {
                 name: employee.name,
