@@ -4,7 +4,7 @@ import './Employee.css'
 import { useParams, useHistory } from 'react-router-dom'
 
 export const EmployeeDetail = () => {
-    const {getEmployeeById} = useContext(EmployeeContext)
+    const {getEmployeeById, releaseEmployee} = useContext(EmployeeContext)
 
         const[employee, setEmployee] = useState({})
 
@@ -19,10 +19,20 @@ export const EmployeeDetail = () => {
         })
     }, [])
 
+    const handleRelease = () => {
+        releaseEmployee(employee.id)
+        .then(() => {
+            history.push("/employees")
+        })
+    }
     return (
         <section className="employee">
             <h3 className="employee__name">{employee.name}</h3>
             <div className="employee__location">Location: {employee.location?.name}</div>
+            <button onClick={handleRelease}>Release Employee</button>
+            <button onClick={() => {
+                history.push(`/employees/edit/${employee.id}`)
+            }}>Edit</button>
         </section>
     )
 }

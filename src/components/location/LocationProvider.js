@@ -26,9 +26,27 @@ export const LocationProvider = (props) => {
         return fetch(`http://localhost:8088/locations/${id}?_embed=employees&_embed=animals`)
         .then(res => res.json())
     }
+
+    const removeLocation = (locationId) => {
+        return fetch(`http://localhost:8088/locations/${locationId}`, {
+            method: "DELETE"
+        })
+        .then(getLocations)
+    }
+
+    const updateLocation = (location) => {
+        return fetch(`http://localhost:8088/locations/${location.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(location)
+        })
+        .then(getLocations)
+    }
     return (
         <LocationContext.Provider value={{
-            locations, getLocations, addLocation, getLocationById
+            locations, getLocations, addLocation, getLocationById, removeLocation, updateLocation
         }}>
             {props.children}
         </LocationContext.Provider>
