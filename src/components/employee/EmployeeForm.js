@@ -36,7 +36,7 @@ export const EmployeeForm = () => {
                     name: employee.name,
                     locationId: parseInt(employee.locationId)
                 })
-                .then(() => history.push("/employees"))
+                .then(() => history.push(`/employees`))
             }
         }
     }

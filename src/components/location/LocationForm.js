@@ -34,7 +34,7 @@ export const LocationForm = () => {
                     name: location.name,
                     address: location.address
                 })
-                    .then(() => history.push("/locations"))
+                    .then(() => history.push(`/locations`))
             }
         }
     }

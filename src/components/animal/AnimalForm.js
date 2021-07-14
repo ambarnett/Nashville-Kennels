@@ -37,8 +37,28 @@ export const AnimalForm = () => {
         setAnimal(newAnimal)
     }
 
+    const saveNewAnimal = () => {
+        addAnimal({
+            name: animal.name,
+            breed: animal.breed,
+            locationId: parseInt(animal.locationId),
+            customerId: parseInt(animal.customerId)
+        })
+            .then(() => history.push(`/animals`))
+    }
+    const saveEditAnimal = () => {
+        updateAnimal({
+            id: animal.id,
+            name: animal.name,
+            breed: animal.breed,
+            locationId: parseInt(animal.locationId),
+            customerId: parseInt(animal.customerId)
+        })
+            .then(() => history.push(`/animals/detail/${animal.id}`))
+    }
+    // handleClickSaveAnimal will just decide which of the above two functions to call
     const handleClickSaveAnimal = (event) => {
-
+        event.preventDefault() //Prevents the browser from submitting the form
         if (parseInt(animal.locationId) === 0 || parseInt(animal.customerId) === 0) {
             window.alert("Please select a location and a customer")
         } else {
@@ -47,23 +67,10 @@ export const AnimalForm = () => {
             setIsLoading(true)
             if (animalId) {
                 //PUT - update
-                updateAnimal({
-                    id: animal.id,
-                    name: animal.name,
-                    breed: animal.breed,
-                    locationId: parseInt(animal.locationId),
-                    customerId: parseInt(animal.customerId)
-                })
-                    .then(() => history.push("/animals/detail/${animal.id}"))
+                saveEditAnimal()
             } else {
                 //POST - add
-                addAnimal({
-                    name: animal.name,
-                    breed: animal.breed,
-                    locationId: parseInt(animal.locationId),
-                    customerId: parseInt(animal.customerId)
-                })
-                    .then(() => history.push("/animals"))
+                saveNewAnimal()
             }
         }
     }
@@ -85,17 +92,17 @@ export const AnimalForm = () => {
 
     return (
         <form className="animalForm">
-            <h2 className="animalForm__title">New Animal</h2>
+            <h2 className="animalForm__title">{animalId ? <>Edit Animal</> : <>New Animal</>}</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Animal name:</label>
-                    <input type="text" id="name" required autoFocus className="form-control" placeholder="Animal name" defaultValue={animal.name} onChange={handleControlledInputChange} />
+                    <input type="text" id="name" required autoFocus className="form-control" placeholder="Animal name" value={animal.name} onChange={handleControlledInputChange} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="breed">Animal breed:</label>
-                    <input type="text" id="breed" required autoFocus className="form-control" placeholder="Animal breed" defaultValue={animal.breed} onChange={handleControlledInputChange} />
+                    <input type="text" id="breed" required autoFocus className="form-control" placeholder="Animal breed" value={animal.breed} onChange={handleControlledInputChange} />
                 </div>
             </fieldset>
             <fieldset>
@@ -126,11 +133,8 @@ export const AnimalForm = () => {
             </fieldset>
             <button className="btn btn-primary"
                 disabled={isLoading}
-                onClick={event => {
-                    event.preventDefault() //Prevents the browser from submitting the form
-                    handleClickSaveAnimal()
-                }}>
-                {animalId ? <>Save Animal</> : <>Add Animal</> }</button>
+                onClick={handleClickSaveAnimal}>
+                {animalId ? <>Save Animal</> : <>Add Animal</>}</button>
         </form>
     )
 }
